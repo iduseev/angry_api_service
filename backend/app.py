@@ -1,15 +1,12 @@
-#backend/app.py
+# backend/app.py
 
 import json
 import traceback
 
 from hashlib import sha256
+from typing import List, AnyStr, Optional
 
 from aiohttp import web
-
-
-async def handler(request) -> web.Response:
-    return web.Response()
 
 
 routes = web.RouteTableDef()
@@ -52,18 +49,9 @@ async def hash_from_string(request) -> web.Response:
         )
 
 
-def create_app() -> web.Application:
+def create_app(argv: Optional[List[AnyStr]] = None) -> web.Application:
     app = web.Application()
     app.add_routes(routes)
-    return app
-
-
-# todo what is it for???
-def init_func(argv) -> web.Application:
-    app = web.Application()
-    app.router.add_get("/", hello)
-    app.router.add_get("/healthcheck", healthcheck)
-    app.router.add_post("/hash", hash_from_string)
     return app
 
 

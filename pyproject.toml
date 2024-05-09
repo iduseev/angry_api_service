@@ -11,8 +11,14 @@ authors = [{ name = "Ilgiz Duseev", email = "ilgiz.duseev@yandex.ru" }]
 license = {text = "MIT License"}
 requires-python = ">=3.11"
 dependencies = [
-    "click>=8.1",
-    "aiohttp>=3.9.5",
+    "click>=8",
+    "aiohttp>=3",
+]
+[project.optional-dependencies]
+test = [
+    "pytest",
+    "pytest-aiohttp",
+    "pytest-asyncio"
 ]
 
 [project.scripts]

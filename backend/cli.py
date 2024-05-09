@@ -1,12 +1,10 @@
-#backend/cli.py
-
-# TODO should I add shebang here?
+# backend/cli.py
 
 import click
 
 from aiohttp import web
 
-from app import create_app
+from backend.app import create_app
 
 
 @click.command()
@@ -16,7 +14,3 @@ from app import create_app
 def run_server(host: str, port: int):
     app = create_app()
     web.run_app(app=app, host=host, port=port)
-
-
-if __name__ == "__main__":
-    run_server()
