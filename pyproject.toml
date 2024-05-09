@@ -1,0 +1,18 @@
+[project]
+name = "angry_api"
+version = "1.0.0"
+description = "CLI for running Angry API web application"
+requires-python = ">=3.11"
+dependencies = [
+    python = "^3.12",
+    aiohttp = "^3.9.5",
+    "click>=8.1",
+]
+authors = ["Ilgiz Duseev <ilgiz.duseev@yandex.ru>"]
+
+[project.scripts]
+run_server = "cli:run_server"
+
+[build-system]
+requires = ["click"]
+build-backend = "click"

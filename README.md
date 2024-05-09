@@ -2,6 +2,7 @@
 This repo contains Python-based API web-service based on aiohttp and Click
 
 Test task can be found by following the link below:
+
 https://4kex.notion.site/Middle-Python-90e58234c3be44a8a32e73730df9a242
 
 
@@ -15,20 +16,24 @@ https://4kex.notion.site/Middle-Python-90e58234c3be44a8a32e73730df9a242
 ## Documentation used:
 
 
-aiohttp
+### aiohttp
 ---------------
-https://docs.aiohttp.org/en/stable/
+https://docs.aiohttp.org/en/stable/web_quickstart.html
 
 https://github.com/aio-libs/aiohttp
 
 https://github.com/aio-libs/aiohttp-demos
 
+https://realpython.com/async-io-python/
+
 https://www.youtube.com/watch?v=Z784Mwm4VBg
 
-Click
+### Click
 ---------------
+https://packaging.python.org/en/latest/specifications/entry-points/
+
 https://realpython.com/python-click/
 
-
+https://click.palletsprojects.com/en/latest/entry-points/
 
 
