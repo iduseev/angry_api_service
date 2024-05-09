@@ -1,4 +1,5 @@
 import json
+import traceback
 
 from hashlib import sha256
 
@@ -24,13 +25,19 @@ async def healthcheck(request):
 
 
 @routes.post("/hash")
+async def hash_from_string(request):
+    try:
+        string = request.query["string"]
+        print(f"Gotten the following string from the request body: {string}")
+        response_obj = {"hash_string": sha256(string.encode()).hexdigest()}
+        return web.Response(text=json.dumps(response_obj), status=200)
 
+    except Exception as e:
+        tb = traceback.format_exc()
+        print(f"Could not find a string within the request body! The following exception occurred: {str(e)}")
+        response_obj = {"validation_errors": tb}
+        return web.Response(text=json.dumps(response_obj), status=400)
 
-
-# async def hello(request):
-#     return web.Response(text="Hello, world!")
-
-# app.add_routes([web.get("/", hello)])
 
 app = web.Application()
 app.add_routes(routes)
@@ -40,6 +47,8 @@ app.add_routes(routes)
 def init_func(argv):
     app = web.Application()
     app.router.add_get("/", hello)
+    app.router.add_get("/healthcheck", healthcheck)
+    app.router.add_get("/hash", hash_from_string)
     return app
 
 
