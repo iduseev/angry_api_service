@@ -1,18 +1,18 @@
 [build-system]
-requires = ["click"]
-build-backend = "click"
+requires = ["setuptools >= 61.0"]
+build-backend = "setuptools.build_meta"
 
 [project]
-name = "angry_api"
-version = "1.0.0"
-description = "CLI for running Angry API web application"
+name = "angry_api_service"
+version = "0.1.0"
+description = "A CLI application for running Angry API web service"
 readme = "README.md"
-authors = [{name = "Ilgiz Duseev", email = "ilgiz.duseev@yandex.ru" }]
+authors = [{ name = "Ilgiz Duseev", email = "ilgiz.duseev@yandex.ru" }]
+license = {text = "MIT License"}
 requires-python = ">=3.11"
 dependencies = [
-    python = "^3.12",
-    aiohttp = "^3.9.5",
     "click>=8.1",
+    "aiohttp>=3.9.5",
 ]
 
 [project.scripts]

@@ -30,10 +30,15 @@ https://www.youtube.com/watch?v=Z784Mwm4VBg
 
 ### Click
 ---------------
-https://packaging.python.org/en/latest/specifications/entry-points/
-
 https://realpython.com/python-click/
 
 https://click.palletsprojects.com/en/latest/entry-points/
 
 
+### pyproject.toml
+---------------
+https://packaging.python.org/en/latest/guides/writing-pyproject-toml/
+
+https://packaging.python.org/en/latest/specifications/entry-points/
+
+https://stackoverflow.com/questions/69711606/how-to-install-a-package-using-pip-in-editable-mode-with-pyproject-toml
