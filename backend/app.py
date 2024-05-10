@@ -14,11 +14,12 @@ routes = web.RouteTableDef()
 
 @routes.get("/")
 async def hello(request) -> web.Response:
-    """_summary_
+    """
+    Returns a greeting message to check API functionality
 
-    :param request: _description_
-    :type request: _type_
-    :return: _description_
+    :param request: HTTP request object
+    :type request: aiohttp.web.Request
+    :return: HTTP response object
     :rtype: web.Response
     """
     return web.Response(text="Hello, world")
@@ -26,11 +27,13 @@ async def hello(request) -> web.Response:
 
 @routes.get("/healthcheck")
 async def healthcheck(request) -> web.Response:
-    """_summary_
+    """
+    Returns an empty JSON and status code = 200
+    for each request
 
-    :param request: _description_
-    :type request: _type_
-    :return: _description_
+    :param request: HTTP request object
+    :type request: aiohttp.web.Request
+    :return: HTTP response object
     :rtype: web.Response
     """
     response_obj = {}
@@ -39,12 +42,29 @@ async def healthcheck(request) -> web.Response:
 
 @routes.post("/hash")
 async def hash_from_string(request) -> web.Response:
+    """
+    Endpoint checks if "string" field is provided within the request body.
+    If "string" field is provided - calculates a hash of the given value
+    using algorithm sha256.
+    Returns JSON {"hash_string": <calculated hash>} and status code = 200.
+    Otherwise returns JSON {"validation errors": <error description>} and
+    status code = 400.
+    If encountered an unexpected exception, returns JSON with exception
+    traceback and status code 400.
+
+    :param request: HTTP request object
+    :type request: aiohttp.web.Request
+    :return: HTTP response object
+    :rtype: web.Response
+    """
     try:
         data = await request.post()
         string = data.get("string")
         if not string:
             return web.Response(
-                text=json.dumps({"validation_errors": "Missing 'string' query parameter"}),
+                text=json.dumps(
+                    {"validation_errors": "Missing 'string' query parameter"}
+                ),
                 status=400
             )
         response_obj = {"hash_string": sha256(string.encode()).hexdigest()}
@@ -63,6 +83,16 @@ async def hash_from_string(request) -> web.Response:
 
 
 def create_app(argv: Optional[List[AnyStr]] = None) -> web.Application:
+    """
+    Creates an instance of web application and registers routes.
+    Allows passing optional arguments via CLI such as desired host or port.
+
+    :param argv: list of arguments passed in CLI for running
+                the web-app (host, port), defaults to None
+    :type argv: Optional[List[AnyStr]], optional
+    :return: aiohttp application object
+    :rtype: web.Application
+    """
     app = web.Application()
     app.add_routes(routes)
     return app
