@@ -25,23 +25,23 @@ To install and set up the project, follow these steps:
 
 1. Clone the repository:
 
-```git clone hhttps://github.com/iduseev/angry_api_service.git```
+```$ git clone hhttps://github.com/iduseev/angry_api_service.git```
 
 
 2. Create & activate python **venv**:
 
-```python -m venv .venv```
+```$ python -m venv .venv```
 
-```source .venv/bin/activate```
+```$ source .venv/bin/activate```
 
 
-3. Install the project dependencies within the activated python **venv**:
+3. Install the project dependencies within the activated python **venv** based on **pyproject.toml**:
 
-```pip install -e .```
+```$ pip install -e .```
 
-Once you’ve run this command, then your angry_api_service app will be installed in your current Python environment. You can check it out by running the following command:
+Once you’ve run this command, then your **angry_api_service** app will be installed in your current Python environment. You can check it out by running the following command:
 
-```pip list```
+```$ pip list```
 
 **angry_api_service** should appear among other currently installed packages in a given environment.
 
@@ -63,10 +63,14 @@ ________________________________________________________________________________
 2. GET ```/healthcheck``` - **"healthcheck"** endpoint, returns empty JSON and status code = 200 for each request.
 
 3. POST ```/hash``` - **"hash_from_string"** endpoint, checks if "string" field is provided within the request body.
-If "string" field is provided - calculates a hash of the given value using algorithm sha256.
-Returns JSON {"hash_string": <calculated hash>} and status code = 200.
-Otherwise returns JSON {"validation errors": <error description>} and status code = 400.
-If encountered an unexpected exception, returns JSON with exception traceback and status code 400.
+
+If **string** field is provided - calculates a hash of the given value using algorithm sha256.
+
+Returns JSON ``{"hash_string": <calculated hash>}`` and ``status code 200``.
+
+Otherwise returns JSON ``{"validation errors": <error description>}`` and ``status code 400``.
+
+If encountered an unexpected exception, returns JSON with exception traceback and ``status code 400``.
 
 
 ____________________________________________________________________________________________________________________________________________________
@@ -79,7 +83,7 @@ ________________________________________________________________________________
 
 ## Credits
 
-Thanks to the **aiohttp** and **Click** development teams for creating a powerful and easy-to-use web framework and a tool for native and convenient way to establish a CLI.
+Kudos to the **aiohttp** and **Click** development teams for creating a powerful and easy-to-use web framework and a tool for native and convenient way to establish a CLI.
 
 
 ____________________________________________________________________________________________________________________________________________________
