@@ -55,7 +55,7 @@ The web-server will run on ``localhost`` using port ``8080`` as default. However
 
 ```$ run_server --host 127.0.0.1 --port 8000```
 
-
+____________________________________________________________________________________________________________________________________________________
 
 The web server can also be run in Docker. Follow these steps to containerize this application.
 
