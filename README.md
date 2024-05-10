@@ -20,6 +20,8 @@ https://4kex.notion.site/Middle-Python-90e58234c3be44a8a32e73730df9a242
 ---------------
 https://docs.aiohttp.org/en/stable/web_quickstart.html
 
+https://docs.aiohttp.org/en/stable/web_reference.html
+
 https://github.com/aio-libs/aiohttp
 
 https://github.com/aio-libs/aiohttp-demos

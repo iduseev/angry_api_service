@@ -26,22 +26,21 @@ async def healthcheck(request) -> web.Response:
 @routes.post("/hash")
 async def hash_from_string(request) -> web.Response:
     try:
-        string = request.query["string"]
+        data = await request.post()
+        string = data.get("string")
         if not string:
             return web.Response(
                 text=json.dumps({"validation_errors": "Missing 'string' query parameter"}),
                 status=400
             )
-        print(f"Gotten the following string from the request body: {string}")
         response_obj = {"hash_string": sha256(string.encode()).hexdigest()}
         return web.Response(
             text=json.dumps(response_obj),
             status=200
         )
-
     except Exception as e:
         tb = traceback.format_exc()
-        print(f"Exception occurred: {str(e)}")
+        print(f"Exception occurred: {str(e)}\nTraceback: {tb}")
         response_obj = {"error": tb}
         return web.Response(
             text=json.dumps(response_obj),
