@@ -56,6 +56,7 @@ The web-server will run on ``localhost`` using port ``8080`` as default. However
 ```$ run_server --host 127.0.0.1 --port 8000```
 
 
+
 The web server can also be run in Docker. Follow these steps to containerize this application.
 
 1. Ensure that you are located within the project directory:
@@ -79,9 +80,9 @@ ________________________________________________________________________________
 
 1. GET ```/``` - **"hello"** endpoint, returns a greeting message to check API workability.
    
-2. GET ```/healthcheck``` - **"healthcheck"** endpoint, returns empty JSON and status code = 200 for each request.
+2. GET ```/healthcheck``` - **"healthcheck"** endpoint, returns empty JSON and ``status code 200`` for each request.
 
-3. POST ```/hash``` - **"hash_from_string"** endpoint, checks if "string" field is provided within the request body.
+3. POST ```/hash``` - **"hash_from_string"** endpoint, checks if **string** field is provided within the request body.
 
 If **string** field is provided - calculates a hash of the given value using algorithm sha256.
 
