@@ -49,11 +49,30 @@ You can ensure that the command ``run_server`` is now available within the activ
 
 4. Run the web server using terminal:
 
-``$ run_server``
+```$ run_server```
 
 The web-server will run on ``localhost`` using port ``8080`` as default. However, you can override default values for **host** and **port** using additional flags as per example:
 
-``$ run_server --host 127.0.0.1 --port 8000``
+```$ run_server --host 127.0.0.1 --port 8000```
+
+
+The web server can also be run in Docker. Follow these steps to containerize this application.
+
+1. Ensure that you are located within the project directory:
+
+```$ cd /path/to/angry_api_service```
+
+
+2. Build the web-app's image:
+
+```$ docker build -t angry_api_service .```
+
+3. Start an app container:
+
+```$ docker run -dp 127.0.0.1:8080:8080 angry_api_service```
+
+4. After a few seconds, open your web browser to http://localhost:8080. You should see the greeting message *Hello, world*
+
 
 ____________________________________________________________________________________________________________________________________________________
 ## Endpoints
@@ -139,3 +158,8 @@ https://stackoverflow.com/questions/69711606/how-to-install-a-package-using-pip-
 https://docs.aiohttp.org/en/stable/testing.html
 
 https://stackoverflow.com/questions/70015634/how-to-test-async-function-using-pytest
+
+
+### Docker
+---------------
+https://docs.docker.com/get-started/02_our_app/
