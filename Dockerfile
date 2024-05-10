@@ -18,7 +18,6 @@ COPY --from=build /.venv /.venv
 COPY . .
 
 COPY backend /app/backend
-
 WORKDIR /app
 
 ENV PYTHONPATH=/app
