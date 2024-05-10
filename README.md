@@ -22,11 +22,15 @@ https://docs.aiohttp.org/en/stable/web_quickstart.html
 
 https://docs.aiohttp.org/en/stable/web_reference.html
 
+https://docs.aiohttp.org/en/stable/client_quickstart.html
+
 https://github.com/aio-libs/aiohttp
 
 https://github.com/aio-libs/aiohttp-demos
 
 https://realpython.com/async-io-python/
+
+https://github.com/aio-libs/aiohttp/issues/1155
 
 https://www.youtube.com/watch?v=Z784Mwm4VBg
 
@@ -41,11 +45,11 @@ https://click.palletsprojects.com/en/latest/entry-points/
 
 ### pyproject.toml
 ---------------
-https://stackoverflow.com/questions/62408719/download-dependencies-declared-in-pyproject-toml-using-pip
-
 https://packaging.python.org/en/latest/guides/writing-pyproject-toml/
 
 https://packaging.python.org/en/latest/specifications/entry-points/
+
+https://stackoverflow.com/questions/62408719/download-dependencies-declared-in-pyproject-toml-using-pip
 
 https://stackoverflow.com/questions/69711606/how-to-install-a-package-using-pip-in-editable-mode-with-pyproject-toml
 

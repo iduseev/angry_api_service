@@ -14,11 +14,25 @@ routes = web.RouteTableDef()
 
 @routes.get("/")
 async def hello(request) -> web.Response:
+    """_summary_
+
+    :param request: _description_
+    :type request: _type_
+    :return: _description_
+    :rtype: web.Response
+    """
     return web.Response(text="Hello, world")
 
 
 @routes.get("/healthcheck")
 async def healthcheck(request) -> web.Response:
+    """_summary_
+
+    :param request: _description_
+    :type request: _type_
+    :return: _description_
+    :rtype: web.Response
+    """
     response_obj = {}
     return web.Response(text=json.dumps(response_obj), status=200)
 
