@@ -17,7 +17,4 @@ CMD ["--host", "0.0.0.0", "--port", "8080"]
 COPY --from=build /.venv /.venv
 COPY . .
 
-COPY backend /app/backend
-WORKDIR /app
-
 ENV PYTHONPATH=/app
