@@ -94,6 +94,27 @@ If encountered an unexpected exception, returns JSON with exception traceback an
 
 
 ____________________________________________________________________________________________________________________________________________________
+## Project Structure
+
+```
+📦angry_api_service
+┣ 📦backend
+   ┣ 📜__init__.py
+   ┣ 📜__main__.py
+   ┣ 📜app.py
+   ┗ 📜cli.py
+┣ 📦tests
+   ┗ 📜test_app.py
+┣ 📜.dockerignore
+┣ 📜.gitignore
+┣ 📜.python-version
+┣ 📜Dockerfile
+┣ 📜LICENSE
+┣ 📜README.md
+┗ 📜pyproject.toml
+```
+
+____________________________________________________________________________________________________________________________________________________
 ## Contributing
 
 If you'd like to contribute to this project, please fork the repository and create a new branch for your changes. Then, submit a pull request with a detailed description of your changes.

@@ -1,6 +1,7 @@
 # tests/test_app.py
 
 from hashlib import sha256
+from typing import AnyStr, Dict
 
 import pytest
 
@@ -53,54 +54,38 @@ async def test_healthcheck(cli):
 
 
 @pytest.mark.asyncio
-async def test_hash_from_string_passed(cli):
+@pytest.mark.parametrize("payload, expected_status_code, expected_string_in_response", [
+    ({"string": "test"}, 200, sha256("test".encode()).hexdigest()),
+    ({}, 400, "validation_errors"),
+    ({"foo": "bar"}, 400, "validation_errors"),
+])
+async def test_hash_from_string(
+    cli,
+    payload: Dict,
+    expected_status_code: int,
+    expected_string_in_response: AnyStr
+):
     """
     Testing functionality of hash_from_string() function
-    when expected request body with the field "string"
-    is passed.
-    Asserts that properly calculated hash is in the response body
-    and the status code is 200.
+    when one of the following occurs:
+    - expected request body with the field "string" is passed
+    - no request body passed
+    - the request body contains field(s) other from "string"
+
+    Asserts that expected string exists within the response body
+    and the status code is as expected.
 
     :param cli: instance of aiohttp app test client
     :type cli: aiohttp.test_utils.TestClient
+    :param payload: data that is sent in a request
+    :type payload: Dict
+    :param expected_status_code: status code to be in the response headers
+    :type expected_status_code: int
+    :param expected_string_in_response: string to be in the response body
+    :type expected_string_in_response: AnyStr
+
     """
-    payload = {"string": "test"}
     resp = await cli.post("/hash", data=payload)
-    assert resp.status == 200
+    assert resp.status == expected_status_code
     text = await resp.text()
-    assert sha256(payload["string"].encode()).hexdigest() in text
-
-
-@pytest.mark.asyncio
-async def test_hash_from_string_absent_payload(cli):
-    """
-    Testing functionality of hash_from_string() function
-    when no request body passed.
-    Asserts that "validation_errors" field exists in the response body
-    and the status code is 400.
-
-    :param cli: instance of aiohttp app test client
-    :type cli: aiohttp.test_utils.TestClient
-    """
-    resp = await cli.post("/hash")
-    assert resp.status == 400
-    text = await resp.text()
-    assert "validation_errors" in text
-
-
-@pytest.mark.asyncio
-async def test_hash_from_string_other_key(cli):
-    """
-    Testing functionality of hash_from_string() function
-    when the request body contains field(s) other from "string".
-    Asserts that "validation_errors" field exists in the response body
-    and the status code is 400.
-
-    :param cli: instance of aiohttp app test client
-    :type cli: aiohttp.test_utils.TestClient
-    """
-    payload = {"foo": "bar"}
-    resp = await cli.post("/hash", data=payload)
-    assert resp.status == 400
-    text = await resp.text()
-    assert "validation_errors" in text
+    assert expected_string_in_response in text

@@ -15,7 +15,7 @@ routes = web.RouteTableDef()
 @routes.get("/")
 async def hello(request) -> web.Response:
     """
-    Returns a greeting message to check API functionality
+    Returns a greeting message to check API workability.
 
     :param request: HTTP request object
     :type request: aiohttp.web.Request
